@@ -18,7 +18,7 @@ router.post('/register', async (req, res) => {
     const newUser = new User({ email, password: hashedPassword, name, dob, country, gender, jobTitle, companyName, industry, profilePicture });
     await newUser.save();
     success = true;
-    res.send({ successMessage: "Account created. Welcome to MyVenn!", success });
+    res.status(200).json({ successMessage: "Account created. Welcome to MyVenn!", success });
   } catch (error) {
     console.error("Error creating user:", error);
     res.status(500).json({ errMessage: "Failed to create user, please try again later.", success });
